@@ -123,7 +123,6 @@ def get_training_augmentation(image_size=320):
             p=0.9,
         ),
     ]
-    # return albu.Compose(train_transform)
     return train_transform
 
 
@@ -133,7 +132,6 @@ def get_validation_augmentation(image_size=320):
         albu.Resize(image_size, image_size, p=1),
         albu.PadIfNeeded(384, 480)
     ]
-    # return albu.Compose(test_transform)
     return test_transform
 
 
@@ -223,6 +221,8 @@ if __name__ == "__main__":
 
         #if val_metric is best, add checkpoint
 
+        import pathlib
+        pathlib.Path("teacher_checkpoints/32").mkdir(parents=True, exist_ok=True)
         torch.save(teacher.state_dict(), 'teacher_checkpoints/32/CP_32_{}.pth'.format(epoch+1))
         print("Checkpoint {} saved!".format(epoch+1))
         scheduler.step()
