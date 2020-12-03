@@ -3,6 +3,7 @@ from typing import List
 from torch.utils.data import Dataset
 from skimage import io
 import cv2
+from pathlib import Path
 
 
 class SegmentationDataset(Dataset):
