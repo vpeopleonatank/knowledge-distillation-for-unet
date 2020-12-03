@@ -4,6 +4,7 @@ from torch.utils.data import Dataset
 from skimage import io
 import cv2
 from pathlib import Path
+from skimage.io import imread
 
 
 class SegmentationDataset(Dataset):
@@ -29,7 +30,7 @@ class SegmentationDataset(Dataset):
         result = {"image": image}
 
         if self.masks is not None:
-            mask = gif_imread(self.masks[idx])
+            mask = imread(self.masks[idx])
             if self.to_mask2d:
               mask = cv2.cvtColor(mask, cv2.COLOR_RGB2GRAY)
             result["mask"] = mask
