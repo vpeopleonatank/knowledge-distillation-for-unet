@@ -210,6 +210,7 @@ if __name__ == "__main__":
         train_transforms_fn=train_transforms,
         valid_transforms_fn=valid_transforms,
         batch_size=8,
+        return_dict=False
         # to_mask2d=True      # Convert mask to 2d array
     )
 
